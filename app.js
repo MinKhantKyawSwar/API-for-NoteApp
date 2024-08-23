@@ -6,7 +6,8 @@ require("dotenv").config();
 const multer = require("multer");
 const path = require("path");
 
-const noteRoute = require("./routes/note");
+const noteRoutes = require("./routes/note");
+const authRoutes = require("./routes/auth");
 
 const postRoutes = require("./routes/post");
 
@@ -43,9 +44,10 @@ app.use(
 );
 app.use(cors());
 
-app.use(noteRoute);
+app.use(noteRoutes);
 
 app.use(postRoutes);
+app.use(authRoutes);
 
 mongoose
   .connect(process.env.MONGODB_URL)
