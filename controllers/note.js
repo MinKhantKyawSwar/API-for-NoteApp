@@ -32,7 +32,6 @@ exports.getNotes = (req, res, next) => {
       return res.status(404).json({
         message: "Something went wrong.",
       });
-      console.log(err);
     });
 };
 
@@ -82,6 +81,8 @@ exports.getNote = (req, res, next) => {
 
 exports.deleteNote = (req, res, next) => {
   const { id } = req.params;
+  const cover_image = req.file;
+
   Note.findById(id)
     .then((note) => {
       unlink(note.cover_image);
