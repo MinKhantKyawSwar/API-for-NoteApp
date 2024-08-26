@@ -36,9 +36,9 @@ router.get("/notes/:id", noteController.getNote);
 router.delete("/delete/:id", authMiddleware, noteController.deleteNote);
 
 //GET /edit/:id
-router.get("/edit/:id", authMiddleware, noteController.getOldNote);
+router.get("/edit/:id", noteController.getOldNote);
 
 //PUT /edit
-router.put("/edit", authMiddleware, noteController.updateNote);
+router.put("/edit", noteController.updateNote);
 
 module.exports = router;

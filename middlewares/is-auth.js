@@ -6,6 +6,7 @@ const isAuth = (req, res, next) => {
   if (!authHeader) {
     return res.status(401).json({ message: "User is not authenticated." });
   }
+
   const token = authHeader.split(" ")[1];
   try {
     const tokenMatched = jwt.verify(token, process.env.JWT_KEY);
